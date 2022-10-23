@@ -1,0 +1,27 @@
+name: Curl_Test
+description: Check curl exist
+
+outputs: {}
+
+runs:
+  using: composite
+  steps:
+
+# The action consists of two parts: for "pull_request" and for "push".
+# If "push" happens, then all "pull_request" related steps are skipped,
+# and vice versa.
+
+#################################
+#   Run on a push event         #
+#################################
+
+# In this part of action we check if the workflow was triggered by a push event:
+# If "YES" we invoke some checkings and try to sync updates with target branches.
+# Otherwise, we just skip all steps of this part.
+
+    - name: Main test code
+      shell: bash
+      run: |
+        RESULT=$(curl -V)
+        echo $RESULT
+        done
