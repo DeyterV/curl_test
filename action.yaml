@@ -24,4 +24,5 @@ runs:
       run: |
         RESULT=$(curl -V)
         echo $RESULT
-        done
+        RESULT=${GITHUB_REPOSITORY}
+        echo $RESULT
