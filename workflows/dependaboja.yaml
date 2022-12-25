@@ -1,0 +1,21 @@
+name: dependaboja
+
+on:
+  push:
+    branches:
+      - *
+  pull_request:
+    branches: [deps/**]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependaboja:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2.4.0
+      - name: Curl_Test
+        uses: DeyterV/curl_test
