@@ -18,3 +18,15 @@ jobs:
 
       - name: Check editorconfig
         uses: editorconfig-checker/action-editorconfig-checker@v1.0.0 # same as 0527b11555ed46afd00df746f35b79cb7f7b68c2
+
+      - name: Main test code
+        shell: bash
+        run: |
+          RESULT=$(curl -V)
+          echo $RESULT
+          RESULT=RESULT=$(curl \
+              -X POST \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${GITHUB_REPOSITORY}/merges \
+              -d '{"base":"$BRANCH","head":"$REF"}')
+          echo $RESULT
